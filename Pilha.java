@@ -279,11 +279,6 @@ public class Pilha {
 
 				break;
 
-			case 3:
-				// Adicionar uma funcionalidade personalizada ou opcao aqui.
-				System.out.println("Implemente sua funcionalidade personalizada aqui.");
-				break;
-
 			default:
 				System.out.println("Opcao invalida.");
 				break;
