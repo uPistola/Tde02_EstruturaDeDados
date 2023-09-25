@@ -28,13 +28,13 @@ public class Pilha {
 		return topo == null;
 	}
 
-	public void push(int dado) { // Changed from empilhar to push
+	public void push(int dado) { 
 		NoDaPilha novoNo = new NoDaPilha(dado);
 		novoNo.proximo = topo;
 		topo = novoNo;
 	}
 
-	public int pop() { // Changed from desempilhar to pop
+	public int pop() { 
 		if (estaVazia()) {
 			System.out.println("A pilha esta vazia. Nao e possivel remover elementos.");
 			return -1; // Valor de erro
@@ -124,15 +124,15 @@ public class Pilha {
 		int movimentos = 0;
 
 		for (int i = 0; i < tamanho; i++) {
-			int maior = Integer.MIN_VALUE; // Alterado para encontrar o maior valor
+			int maior = Integer.MIN_VALUE; 
 
 			while (!origem.vazia()) {
 				int valor = origem.pop();
-				if (valor > maior) { // Alterado para encontrar o maior valor
+				if (valor > maior) { 
 					if (maior != Integer.MIN_VALUE) {
-						auxiliar.push(maior); // Alterado para empilhar o maior valor
+						auxiliar.push(maior); 
 					}
-					maior = valor; // Alterado para atualizar o maior valor
+					maior = valor; 
 				} else {
 					auxiliar.push(valor);
 				}
@@ -164,12 +164,12 @@ public class Pilha {
 			while (atual != null) {
 				if (atual.dado < ultimo) {
 					return 0;
-				} // Se encontrar um valor fora de ordem, retorna 0
+				} 
 				ultimo = atual.dado;
 				atual = atual.proximo;
 			}
 
-			return 3; // A pilha está em ordem crescente
+			return 3; 
 		case 1:
 			ultimo = 100;
 			if (topo == null) {
@@ -179,12 +179,12 @@ public class Pilha {
 			while (atual != null) {
 				if (atual.dado > ultimo) {
 					return 0;
-				} // Se encontrar um valor fora de ordem, retorna 0
+				} 
 				ultimo = atual.dado;
 				atual = atual.proximo;
 			}
 
-			return 3; // A pilha está em ordem crescente
+			return 3; 
 		}
 		return 0;
 	}
@@ -204,7 +204,7 @@ public class Pilha {
 		System.out.println(" --------------------------------------------");
 		Random gerador = new Random();
 		for (int i = 0; i < tamanhoPilhas; i++) {
-			pilha1.push(gerador.nextInt(101)); // Changed from empilhar to push
+			pilha1.push(gerador.nextInt(101)); 
 		}
 
 		int opcao;
@@ -236,26 +236,23 @@ public class Pilha {
 				System.out.println("Jogo encerrado.");
 				break;
 			case 1:
-				// Mover um elemento de uma pilha para outra.
 				System.out.print("Digite o numero da pilha de origem (1, 2 ou 3): ");
 				int origem = scanner.nextInt();
 
 				System.out.print("Digite o numero da pilha de destino (1, 2 ou 3): ");
 				int destino = scanner.nextInt();
 
-				// Verificar se a origem e o destino sao validos (1, 2 ou 3).
 				if (origem < 1 || origem > 3 || destino < 1 || destino > 3) {
 					System.out.println("Numero de pilha invalido.");
 				} else {
-					// Executar a movimentacao se a origem e o destino forem diferentes.
 					if (origem != destino) {
 						Pilha pilhaOrigem = origem == 1 ? pilha1 : (origem == 2 ? pilha2 : pilha3);
 						Pilha pilhaDestino = destino == 1 ? pilha1 : (destino == 2 ? pilha2 : pilha3);
 
 						if (!pilhaOrigem.estaVazia()) {
-							int elementoMovido = pilhaOrigem.pop(); // Changed from desempilhar to pop
-							pilhaDestino.push(elementoMovido); // Changed from empilhar to push
-							pilhaOrigem.incrementarMovimentosExecutados(); // Incrementar a contagem de movimentos
+							int elementoMovido = pilhaOrigem.pop(); 
+							pilhaDestino.push(elementoMovido); 
+							pilhaOrigem.incrementarMovimentosExecutados(); 
 							System.out.println("---------------------------------------------------");
 							System.out.println(
 									"Numero total de movimentos executados: " + pilhaOrigem.getMovimentosExecutados());
